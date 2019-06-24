@@ -1,5 +1,7 @@
 # Multiple Choice Autograder
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/chrispyles/mcautograder/master?filepath=mcautograder-demo.ipynb)
+
 This repository contains a small Python-based multiple-choice question autograder inteded for use in Jupyter Notebooks. It is meant to be packaged with each assignment so that they are easier for use on third-party servers, e.g. MyBinder.
 
 ## Usage
@@ -20,7 +22,7 @@ grader.check("q1", my_answer)
 
 If the student's response matches the test file, then `Correct.` will be printed; otherwise, `Try again.` will be printed. If the student enters an invalid response (e.g. `float`, answer of > 1 character), the grader will throw an `AssertionError` with a descriptive message.
 
-For a more descriptive introduction to the autograder, launch our [Binder]().
+For a more descriptive introduction to the autograder, launch our [Binder](https://mybinder.org/v2/gh/chrispyles/mcautograder/master?filepath=mcautograder-demo.ipynb).
 
 <div id="tests"></div>
 
