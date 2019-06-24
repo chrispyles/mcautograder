@@ -53,7 +53,8 @@ class Notebook:
 			assert len(answer) == 1, "Answer must be of length 1"
 		else:
 			assert 0 <= answer < 10, "Answer must be a single digit"
-		assert self._retakes[q_name] < self._max_retakes, "No more retakes allowed."
+		if not self._inf_retakes:
+			assert self._retakes[q_name] < self._max_retakes, "No more retakes allowed."
 
 		for test in self._tests:
 			if q_name in test[:-4]:
