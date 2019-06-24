@@ -77,4 +77,7 @@ class Notebook:
 				print("Try again.")
 
 	def score(self):
-		print("{}/{}: {:.3f}%".format(self._earned, self._possible, self._earned/self._possible*100))
+		if self._scored:
+			print("{}/{}: {:.3f}%".format(self._earned, self._possible, self._earned/self._possible*100))
+		else:
+			print("This notebook is not scored.")
