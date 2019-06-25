@@ -4,6 +4,14 @@
 
 This repository contains a small Python-based multiple-choice question autograder inteded for use in Jupyter Notebooks. It is meant to be packaged with each assignment so that they are easier for use on third-party servers, e.g. MyBinder.
 
+## Installation
+
+You can install `mcautograder` using pip.
+
+```bash
+pip install mcautograder
+```
+
 ## Usage
 
 To use the autograder, just include the `mcautograder.py` file in the directory containing your notebook, along with your [tests file](#tests). When you load the notebook dependencies, import the file and initialize the grader by creating an instance of the `Notebook` class (the argument to pass is the path to your tests file):
