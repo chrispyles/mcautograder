@@ -14,7 +14,7 @@ pip install mcautograder
 
 ## Usage
 
-To use the autograder, just include the `mcautograder.py` file in the directory containing your notebook, along with your [tests file](#tests). When you load the notebook dependencies, import the file and initialize the grader by creating an instance of the `Notebook` class (the argument to pass is the path to your tests file):
+To use the autograder, import the `mcautograder` package and make sure to your [tests file](#tests) with your notebook. When you load the notebook dependencies, import the file and initialize the grader by creating an instance of the `Notebook` class (the argument to pass is the path to your tests file):
 
 ```python
 import mcautograder
