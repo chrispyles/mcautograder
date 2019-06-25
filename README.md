@@ -69,3 +69,7 @@ question6 7 0
 ```
 
 The identifiers have no set format, other than that they cannot contain a space. This is because the identifier is passed to `Notebook.check()` when you call it in the notebook.
+
+## Branches
+
+The `master` branch contains the current state of `mcautograder` as it is hosted on PyPI. The `dev` branch contains the next version of `mcautograder` in development. _Do not commit directly to the `master` branch._ Make commits in the `dev` branch and then PR to the `master` branch before uploading to PyPI.
