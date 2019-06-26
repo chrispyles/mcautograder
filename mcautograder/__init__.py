@@ -1,3 +1,3 @@
 name = "mcautograder"
 
-from .mcautograder import *
+from .notebook import *
