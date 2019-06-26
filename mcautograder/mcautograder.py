@@ -14,11 +14,17 @@ class Notebook:
 		"""
 		Initlaizes multiple choice autograder.
 
-		Args:
-			tests       - relative filepath to tests file
-			scored      - whether or not the assignment is scored; default `False`
-			max_retakes - if `"inf"`, no maximum retakes; maximum number of retakes
-						  allowed; deault `"inf"`
+		Parameters
+		----------
+
+		tests
+			relative filepath to tests file
+
+		scored
+			whether or not the assignment is scored; default `False`
+
+		max_retakes
+			if `"inf"`, no maximum retakes; maximum number of retakes allowed; deault `"inf"`
 		"""
 		self._tests_raw = runpy.run_path(tests)["answers"]
 		self._identifiers = [answer["identifier"] for answer in self._tests_raw]
@@ -53,9 +59,14 @@ class Notebook:
 		"""
 		Checks whether or not answer is correct; returns boolean
 
-		Args:
-			identifier - question identifier
-			answer     - student answer
+		Parameters
+		----------
+
+		identifier
+			question identifier
+
+		answer
+			student answer
 		"""
 		assert identifier in self._identifiers, "{} is not in the question bank".format(identifier)
 		assert type(answer) in [str, int], "Answer must be a string or integer"
@@ -86,9 +97,14 @@ class Notebook:
 		Visible wrapper for _check_answer to print output based on whether or not student's
 		answer is correct
 
-		Args:
-			identifier - question identifier
-			answer - student's answer
+		Parameters
+		----------
+
+		identifier
+			question identifier
+
+		answer
+			student's answer
 		"""
 		result = self._check_answer(identifier, answer)
 		if self._scored:
@@ -106,8 +122,10 @@ class Notebook:
 		"""
 		If assignment is scored, displays student's score as fraction and percentage.
 
-		Args:
-			None
+		Parameters
+		----------
+			
+		None
 		"""
 		if self._scored:
 			print("{}/{}: {:.3f}%".format(self._earned, self._possible, self._earned/self._possible*100))
