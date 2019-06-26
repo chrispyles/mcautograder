@@ -4,3 +4,9 @@ __pycache__
 build
 dist
 mcautograder.egg-info
+mcautograder/tests.py
+mcautograder/test.ipynb
+mcautograder/.ipynb_checkpoints
+demo/__pycache__
+demo/.ipynb_checkpoints
+mcautograder/__pycache__

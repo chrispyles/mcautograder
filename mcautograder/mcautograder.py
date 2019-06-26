@@ -4,82 +4,105 @@
 
 import string
 import re
+import runpy
 
 def repeat(x, n):
+	"""
+	Returns a list of a given value repeated a given number of times
+
+	Args:
+		x - value to repeat
+		n - number of repetitions
+	"""
 	return [x for _ in range(n)]
 
 class Notebook:
+	"""Multiple choice question autograder for Jupyter Notebook"""
+
 	def __init__(self, tests, scored=False, max_retakes="inf"):
 		"""
-		Initlaizes multiple choice autograder. Tests should be saved in a
-		hidden text file (by appending a period to the filename). The format
-		for the tests should be "q_name answer points", e.g.:
+		Initlaizes multiple choice autograder.
 
-			q1_1 1 1
-			q1_2 2 0
-			q1_3 2 0
-			q2_1 4 1
-			q2_2 3 2
-			q3_1 A 0
-			q3_2 D 3
-			q3_3 B 2
-			
+		Args:
+			tests       - relative filepath to tests file
+			scored      - whether or not the assignment is scored; default `False`
+			max_retakes - if `"inf"`, no maximum retakes; maximum number of retakes
+						  allowed; deault `"inf"`
 		"""
-		with open(tests) as tests_file:
-			self._tests = tests_file.readlines()
-		if self._tests[-1][-1] != "\n":
-			self._tests[-1] += "\n"
-		self._questions = [q[:-5] for q in self._tests]
+		self._tests_raw = runpy.run_path(tests)["answers"]
+		self._identifiers = [answer["identifier"] for answer in self._tests_raw]
+		self._tests = {identifier : test for identifier, test in zip(
+			self._identifiers,
+			self._tests_raw
+		)}
 
-		self._inf_retakes = True
+
+
 		self._scored = scored
-
 		if self._scored:
-			point_by_question = [int(q.split(" ")[2][:-1]) for q in self._tests]
-			self._points = {q:p for q, p in zip(self._questions, point_by_question)}
-			self._answered = {q:f for q, f in zip(self._questions, repeat(False, len(self._questions)))}
+			self._points = {identifier : self._tests[identifier]["points"] for identifier in self._identifiers}
+			self._answered = {identifier : false for identifier, false in zip(
+				self._identifiers, 
+				repeat(False, len(self._identifiers))
+			)}
 			self._possible = sum(self._points.values())
 			self._earned = 0
 
+		self._inf_retakes = True
 		if max_retakes != "inf":
+			assert max_retakes > 0 and type(max_retakes) == int, "max_retakes must be a positive integer"
 			self._inf_retakes = False
-			self._retakes = {q:r for q, r in zip(self._questions, repeat(0, len(self._questions)))}
+			self._retakes = {identifier : zero for identifier, zero in zip(
+				self._identifiers, 
+				repeat(0, len(self._identifiers))
+			)}
 			self._max_retakes = max_retakes
 
-	def _check_answer(self, q_name, answer):
-		assert q_name in self._questions, "{} is not in the question bank".format(q_name)
+	def _check_answer(self, identifier, answer):
+		"""
+		Checks whether or not answer is correct; returns boolean
+
+		Args:
+			identifier - question identifier
+			answer     - student answer
+		"""
+		assert identifier in self._identifiers, "{} is not in the question bank".format(identifier)
 		assert type(answer) in [str, int], "Answer must be a string or integer"
 		if type(answer) == str:
 			assert len(answer) == 1, "Answer must be of length 1"
 		else:
 			assert 0 <= answer < 10, "Answer must be a single digit"
 		if not self._inf_retakes:
-			assert self._retakes[q_name] < self._max_retakes, "No more retakes allowed."
+			assert self._retakes[identifier] < self._max_retakes, "No more retakes allowed."
 
-		for test in self._tests:
-			if q_name in test[:-4]:
-				if test[-4] in string.digits:
-					if answer == int(test[-4]):
-						if self._scored and not self._answered[q_name]:
-							self._answered[q_name] = True
-							self._earned += self._points[q_name]
-						if not self._inf_retakes:
-							self._retakes[q_name] += 1
-						return True
-				elif answer == test[-4]:
-					if self._scored and not self._answered[q_name]:
-						self._answered[q_name] = True
-						self._earned += self._points[q_name]
-					if not self._inf_retakes:
-						self._retakes[q_name] += 1
-					return True
-		return False
+		correct_answer = self._tests[identifier]["answer"]
+		assert type(correct_answer) == type(answer), "Answer is not a(n) {}".format(type(correct_answer))
 
-	def check(self, q_name, answer):
-		result = self._check_answer(q_name, answer)
+		if correct_answer == answer:
+			if self._scored and not self._answered[identifier]:
+				self._answered[identifier] = True
+				self._earned += self._points[identifier]
+			if not self._inf_retakes:
+				self._retakes[identifier] += 1
+			return True
+		else:
+			if not self._inf_retakes:
+				self._retakes[identifier] += 1
+			return False
+
+	def check(self, identifier, answer):
+		"""
+		Visible wrapper for _check_answer to print output based on whether or not student's
+		answer is correct
+
+		Args:
+			identifier - question identifier
+			answer - student's answer
+		"""
+		result = self._check_answer(identifier, answer)
 		if self._scored:
 			if result:
-				print("Correct. {} points added to your score.".format(self._points[q_name]))
+				print("Correct. {} points added to your score.".format(self._points[identifier]))
 			else:
 				print("Try again.")
 		else:
@@ -89,6 +112,12 @@ class Notebook:
 				print("Try again.")
 
 	def score(self):
+		"""
+		If assignment is scored, displays student's score as fraction and percentage.
+
+		Args:
+			None
+		"""
 		if self._scored:
 			print("{}/{}: {:.3f}%".format(self._earned, self._possible, self._earned/self._possible*100))
 		else:
