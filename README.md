@@ -1,6 +1,6 @@
 # Multiple Choice Autograder
 
-[![Documentation Status](https://readthedocs.org/projects/mcautograder/badge/?version=latest)](https://mcautograder.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/mcautograder/badge/?version=latest)](https://mcautograder.cpyles.com/en/latest/?badge=latest)
  [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/chrispyles/mcautograder/master?filepath=demo/mcautograder-demo.ipynb)
 
 This repository contains a small Python-based multiple-choice question autograder inteded for use in Jupyter Notebooks. It is meant to be packaged with each assignment so that they are easier for use on third-party servers, e.g. MyBinder.
