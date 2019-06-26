@@ -11,6 +11,8 @@ Installation
 
 You can install ``mcautograder`` using ``pip``. 
 
+.. code-block:: none
+
     pip install mcautograder
 
 Contents
