@@ -13,7 +13,7 @@ class Notebook:
 	def __init__(self, tests, scored=False, max_retakes="inf"):
 		"""
 		Initlaizes multiple choice autograder.
-
+    
 		Parameters
 		----------
 
@@ -58,7 +58,7 @@ class Notebook:
 	def _check_answer(self, identifier, answer):
 		"""
 		Checks whether or not answer is correct; returns boolean
-
+    
 		Parameters
 		----------
 
@@ -97,7 +97,7 @@ class Notebook:
 		Visible wrapper for _check_answer to print output based on whether or not student's
 		answer is correct
 
-		Parameters
+    Parameters
 		----------
 
 		identifier
