@@ -5,16 +5,7 @@
 import string
 import re
 import runpy
-
-def repeat(x, n):
-	"""
-	Returns a list of a given value repeated a given number of times
-
-	Args:
-		x - value to repeat
-		n - number of repetitions
-	"""
-	return [x for _ in range(n)]
+from .utils import *
 
 class Notebook:
 	"""Multiple choice question autograder for Jupyter Notebook"""
