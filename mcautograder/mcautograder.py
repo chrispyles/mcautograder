@@ -6,24 +6,27 @@ import string
 import re
 
 def repeat(x, n):
+	"""
+	Returns a list of a given value repeated a given number of times
+
+	Args:
+		x - value to repeat
+		n - number of repetitions
+	"""
 	return [x for _ in range(n)]
 
 class Notebook:
+	"""Multiple choice question autograder for Jupyter Notebook"""
+
 	def __init__(self, tests, scored=False, max_retakes="inf"):
 		"""
-		Initlaizes multiple choice autograder. Tests should be saved in a
-		hidden text file (by appending a period to the filename). The format
-		for the tests should be "q_name answer points", e.g.:
+		Initlaizes multiple choice autograder.
 
-			q1_1 1 1
-			q1_2 2 0
-			q1_3 2 0
-			q2_1 4 1
-			q2_2 3 2
-			q3_1 A 0
-			q3_2 D 3
-			q3_3 B 2
-			
+		Args:
+			tests       - relative filepath to tests file
+			scored      - whether or not the assignment is scored; default `False`
+			max_retakes - if `"inf"`, no maximum retakes; maximum number of retakes
+						  allowed; deault `"inf"`
 		"""
 		with open(tests) as tests_file:
 			self._tests = tests_file.readlines()
@@ -42,11 +45,19 @@ class Notebook:
 			self._earned = 0
 
 		if max_retakes != "inf":
+			assert max_retakes > 0 and type(max_retakes) == int, "max_retakes must be a positive integer"
 			self._inf_retakes = False
 			self._retakes = {q:r for q, r in zip(self._questions, repeat(0, len(self._questions)))}
 			self._max_retakes = max_retakes
 
 	def _check_answer(self, q_name, answer):
+		"""
+		Checks whether or not answer is correct; returns boolean
+
+		Args:
+			q_name - question identifier
+			answer - student answer
+		"""
 		assert q_name in self._questions, "{} is not in the question bank".format(q_name)
 		assert type(answer) in [str, int], "Answer must be a string or integer"
 		if type(answer) == str:
@@ -76,6 +87,14 @@ class Notebook:
 		return False
 
 	def check(self, q_name, answer):
+		"""
+		Visible wrapper for _check_answer to print output based on whether or not student's
+		answer is correct
+
+		Args:
+			q_name - question identifier
+			answer - student's answer
+		"""
 		result = self._check_answer(q_name, answer)
 		if self._scored:
 			if result:
@@ -89,6 +108,12 @@ class Notebook:
 				print("Try again.")
 
 	def score(self):
+		"""
+		If assignment is scored, displays student's score as fraction and percentage.
+
+		Args:
+			None
+		"""
 		if self._scored:
 			print("{}/{}: {:.3f}%".format(self._earned, self._possible, self._earned/self._possible*100))
 		else:
