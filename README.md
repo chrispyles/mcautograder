@@ -18,7 +18,7 @@ To use the autograder, import the `mcautograder` package and make sure to your [
 
 ```python
 import mcautograder
-grader = mcautograder.Notebook("tests.txt")
+grader = mcautograder.Notebook("tests.py")
 ```
 
 If you want the autograder to score the questions, make sure to set `scored=True` in your `Notebook` call. **The default behavior of the autograder is to allow students to submit answers until they get the correct one.** If you want to change this behavior, you must set the `max_retakes` argument to an integer, the maximum number of retakes allowed. If this is the case, when students hit that ceiling, the check cells will throw an `AssertionError` because they've hit the retake ceiling.
@@ -26,7 +26,7 @@ If you want the autograder to score the questions, make sure to set `scored=True
 An example call for a scored notebook with a retake ceiling of 5 is given below.
 
 ```python
-grader = Notebook("tests.txt", scored=True, max_retakes=5)
+grader = Notebook("tests.py", scored=True, max_retakes=5)
 ```
 
 To use the autograder to check answers, have students assign their answers to variables in the notebook; these answers can strings of length 1 or single-digit integers. Then call the `Notebook.check()` function; the first argument should be the question identifier in your tests file and the second should be the variable the student created.
@@ -52,24 +52,47 @@ For a more descriptive introduction to the autograder, launch our [Binder](https
 
 ## Tests
 
-The autograder relies on a tests file to get the answers for the questions. In this repo, the file is `tests.txt` and it is public; in practice, I usually distribute the answers as a hidden file, `.tests.txt`. It is unhidden here so that you can peruse its structure and contents.
+The autograder relies on a tests file to get the answers for the questions. In this repo, the file is `tests.py` and it is public; in practice, I usually distribute the answers as a hidden file, `.tests.py`. It is unhidden here so that you can peruse its structure and contents.
 
-The file has a specific format: each line represents a single question, with an identifier, an answer, and a score. The structure should be `identifier answer score` (note the space). Answers **must** be of length 1 (i.e. a single-character string or a single-digit integer). The score must be included because of how the autograder parses each line. If you don't want your notebook scored, just set each score to 0 and set the `scored` argument of `Notebook()` to `False`.
+In the file, we define a variable `answers` which is a list containing dictionaries, each of which represents a single question. Each dictionary should contain 3 keys: `"identifier"`, `"answer"`, and, optionally, `"points"`. If your assignment is unscored, you can leave off the `"points"` key. A description of the keys' values is given below:
+
+| Key | Value Type | Value Description |
+|-----|-----|-----|
+| `"identifier"` | `str` | a unique question identifier |
+| `"answer"` | `str`, `int` | the answer to the question; specifications below |
+| `"points"` | `int` | optional; the number of points assigned to that question |
+
+Answers **must** be of length 1 (i.e. a single-character string or a single-digit integer). The autograder is currently set up to throw an `AssertionError` if an answer of length > 1 is submitted, although we do intend to add this functionality later.
 
 An example of a file is given below.
 
-```
-q1 1 0
-q2_1 3 0
-q2_2 2 3
-q3 A 4
-q4 E 0
-q5 C 1
-question6 7 0
+```python
+answers = [
+	{
+		"identifier": "q1",
+		"answer": 3,
+		"points": 1,
+	}, {
+		"identifier": "q2",
+		"answer": 2,
+		"points": 2,
+	}, {
+		"identifier": "q3",
+		"answer": "D",
+		"points": 3,
+	}
+]
 ```
 
-The identifiers have no set format, other than that they cannot contain a space. This is because the identifier is passed to `Notebook.check()` when you call it in the notebook.
+The identifiers have no set format. This is because the identifier is passed to `Notebook.check()` when you call it in the notebook.
 
 ## Branches
 
 The `master` branch contains the current state of `mcautograder` as it is hosted on PyPI. The `dev` branch contains the next version of `mcautograder` in development. _Do not commit directly to the `master` branch._ Make commits in the `dev` branch and then PR to the `master` branch before uploading to PyPI.
+
+## Changelog
+
+**v0.0.3:**
+
+* Changed structure of tests file to be more intuitive
+* Added docstrings and better documentation
