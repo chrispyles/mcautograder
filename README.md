@@ -92,6 +92,10 @@ The `master` branch contains the current state of `mcautograder` as it is hosted
 
 ## Changelog
 
+**v0.0.4:**
+
+* Moved utils to separate file for documentation
+
 **v0.0.3:**
 
 * Changed structure of tests file to be more intuitive
