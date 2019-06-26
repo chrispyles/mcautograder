@@ -5,16 +5,7 @@
 import string
 import re
 import runpy
-
-def repeat(x, n):
-	"""
-	Returns a list of a given value repeated a given number of times
-
-	Args:
-		x - value to repeat
-		n - number of repetitions
-	"""
-	return [x for _ in range(n)]
+from .utils import *
 
 class Notebook:
 	"""Multiple choice question autograder for Jupyter Notebook"""
@@ -22,12 +13,18 @@ class Notebook:
 	def __init__(self, tests, scored=False, max_retakes="inf"):
 		"""
 		Initlaizes multiple choice autograder.
+    
+		Parameters
+		----------
 
-		Args:
-			tests       - relative filepath to tests file
-			scored      - whether or not the assignment is scored; default `False`
-			max_retakes - if `"inf"`, no maximum retakes; maximum number of retakes
-						  allowed; deault `"inf"`
+		tests
+			relative filepath to tests file
+
+		scored
+			whether or not the assignment is scored; default `False`
+
+		max_retakes
+			if `"inf"`, no maximum retakes; maximum number of retakes allowed; deault `"inf"`
 		"""
 		self._tests_raw = runpy.run_path(tests)["answers"]
 		self._identifiers = [answer["identifier"] for answer in self._tests_raw]
@@ -61,10 +58,15 @@ class Notebook:
 	def _check_answer(self, identifier, answer):
 		"""
 		Checks whether or not answer is correct; returns boolean
+    
+		Parameters
+		----------
 
-		Args:
-			identifier - question identifier
-			answer     - student answer
+		identifier
+			question identifier
+
+		answer
+			student answer
 		"""
 		assert identifier in self._identifiers, "{} is not in the question bank".format(identifier)
 		assert type(answer) in [str, int], "Answer must be a string or integer"
@@ -95,9 +97,14 @@ class Notebook:
 		Visible wrapper for _check_answer to print output based on whether or not student's
 		answer is correct
 
-		Args:
-			identifier - question identifier
-			answer - student's answer
+    Parameters
+		----------
+
+		identifier
+			question identifier
+
+		answer
+			student's answer
 		"""
 		result = self._check_answer(identifier, answer)
 		if self._scored:
@@ -115,8 +122,10 @@ class Notebook:
 		"""
 		If assignment is scored, displays student's score as fraction and percentage.
 
-		Args:
-			None
+		Parameters
+		----------
+			
+		None
 		"""
 		if self._scored:
 			print("{}/{}: {:.3f}%".format(self._earned, self._possible, self._earned/self._possible*100))
