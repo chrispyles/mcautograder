@@ -1,3 +1,7 @@
+"""
+A multiple choice question autograder for use in Jupyter Notebooks
+"""
+
 name = "mcautograder"
 
-from .mcautograder import *
+from .notebook import *

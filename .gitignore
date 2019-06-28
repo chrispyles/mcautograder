@@ -10,3 +10,6 @@ mcautograder/.ipynb_checkpoints
 demo/__pycache__
 demo/.ipynb_checkpoints
 mcautograder/__pycache__
+test-notebook.ipynb
+test-notebook.py
+pypi-instructions.md

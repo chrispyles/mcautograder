@@ -22,12 +22,12 @@ import mcautograder
 grader = mcautograder.Notebook("tests.py")
 ```
 
-If you want the autograder to score the questions, make sure to set `scored=True` in your `Notebook` call. **The default behavior of the autograder is to allow students to submit answers until they get the correct one.** If you want to change this behavior, you must set the `max_retakes` argument to an integer, the maximum number of retakes allowed. If this is the case, when students hit that ceiling, the check cells will throw an `AssertionError` because they've hit the retake ceiling.
+If you want the autograder to score the questions, make sure to set `scored=True` in your `Notebook` call. **The default behavior of the autograder is to allow students to submit answers until they get the correct one.** If you want to change this behavior, you must set the `max_attempts` argument to an integer, the maximum number of retakes allowed. If this is the case, when students hit that ceiling, the check cells will throw an `AssertionError` because they've hit the retake ceiling.
 
 An example call for a scored notebook with a retake ceiling of 5 is given below.
 
 ```python
-grader = Notebook("tests.py", scored=True, max_retakes=5)
+grader = Notebook("tests.py", scored=True, max_attempts=5)
 ```
 
 To use the autograder to check answers, have students assign their answers to variables in the notebook; these answers can strings of length 1 or single-digit integers. Then call the `Notebook.check()` function; the first argument should be the question identifier in your tests file and the second should be the variable the student created.
@@ -92,6 +92,12 @@ The identifiers have no set format. This is because the identifier is passed to 
 The `master` branch contains the current state of `mcautograder` as it is hosted on PyPI. The `dev` branch contains the next version of `mcautograder` in development. _Do not commit directly to the `master` branch._ Make commits in the `dev` branch and then PR to the `master` branch before uploading to PyPI.
 
 ## Changelog
+
+**v0.0.5:**
+
+* Changed `mcautograder.py` to `notebook.py` for less confusion
+* Changed `max_retakes` param to `max_attempts` for better understanding
+* Upadted docstring format for sphinx autodoc
 
 **v0.0.4:**
 
