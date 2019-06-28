@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
 	name = "mcautograder",
-	version = "0.0.4",
+	version = "0.0.5",
 	author = "Chris Pyles",
 	author_email = "cpyles@berkeley.edu",
 	description = "Small multiple choice question autograding library",
