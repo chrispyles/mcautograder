@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>index</title>
+<title>tests</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13129,26 +13129,53 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="mcuaotgrader-Documentation"><code>mcuaotgrader</code> Documentation<a class="anchor-link" href="#mcuaotgrader-Documentation">&#182;</a></h1><p><a href="index">Home</a> | <a href="usage">Usage</a> | <a href="tests">Tests</a> | <a href="docs">Docs</a> | <a href="license">License</a> | <a href="help">Help</a></p>
-<h2 id="What-is-mcautograder?">What is <code>mcautograder</code>?<a class="anchor-link" href="#What-is-mcautograder?">&#182;</a></h2><p>This library is a mutliple choice question autograding library for Python. It was developed to be packaged with Jupyter Notebooks in such a way that does not require any special setup on the part of the server.</p>
-<h2 id="Installation">Installation<a class="anchor-link" href="#Installation">&#182;</a></h2><p>You can install <code>mcautograder</code> using pip.</p>
-<div class="highlight"><pre><span></span>pip install mcautograder
+<h1 id="Tests">Tests<a class="anchor-link" href="#Tests">&#182;</a></h1><p><a href="index">Home</a> | <a href="usage">Usage</a> | <a href="tests">Tests</a> | <a href="docs">Docs</a> | <a href="license">License</a> | <a href="help">Help</a></p>
+<p>The autograder relies on a tests file to get the answers for the questions. Tests are ususally distributed in a hidden file, e.g. <code>.tests.py</code>.</p>
+<p>In the file, define a variable <code>answers</code> which is a list containing dictionaries, each of which represents a single question. Each dictionary should contain 3 keys: <code>"identifier"</code>, <code>"answer"</code>, and, optionally, <code>"points"</code>. If your assignment is unscored, you can leave off the <code>"points"</code> key. A description of the keys' values is given below:</p>
+<table>
+<thead><tr>
+<th>Key</th>
+<th>Value Type</th>
+<th>Value Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"identifier"</code></td>
+<td><code>str</code></td>
+<td>a unique question identifier</td>
+</tr>
+<tr>
+<td><code>"answer"</code></td>
+<td><code>str</code>, <code>int</code></td>
+<td>the answer to the question; specifications below</td>
+</tr>
+<tr>
+<td><code>"points"</code></td>
+<td><code>int</code></td>
+<td>optional; the number of points assigned to that question</td>
+</tr>
+</tbody>
+</table>
+<p>Answers <strong>must</strong> be of length 1 (i.e. a single-character string or a single-digit integer). The autograder is currently set up to throw an <code>AssertionError</code> if an answer of length &gt; 1 is submitted, although we do intend to add this functionality later.</p>
+<p>An example of a tests file is given below.</p>
+<div class="highlight"><pre><span></span><span class="n">answers</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;identifier&quot;</span><span class="p">:</span> <span class="s2">&quot;q1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;identifier&quot;</span><span class="p">:</span> <span class="s2">&quot;q2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;identifier&quot;</span><span class="p">:</span> <span class="s2">&quot;q3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
-<h2 id="Changelog">Changelog<a class="anchor-link" href="#Changelog">&#182;</a></h2><p><strong>v0.0.5:</strong></p>
-<ul>
-<li>Changed <code>mcautograder.py</code> to <code>notebook.py</code> for less confusion</li>
-<li>Changed <code>max_retakes</code> param to <code>max_attempts</code> for better understanding</li>
-<li>Upadted docstring format for sphinx autodoc</li>
-</ul>
-<p><strong>v0.0.4:</strong></p>
-<ul>
-<li>Moved utils to separate file for documentation</li>
-</ul>
-<p><strong>v0.0.3:</strong></p>
-<ul>
-<li>Changed structure of tests file to be more intuitive</li>
-<li>Added docstrings and better documentation</li>
-</ul>
+<p>The identifiers have no set format. This is because the identifier is passed to <code>Notebook.check()</code> when you call it in the notebook.</p>
 
 </div>
 </div>
