@@ -106,6 +106,7 @@ The `master` branch contains the current state of `mcautograder` as it is hosted
 * Changed `mcautograder.py` to `notebook.py` for less confusion
 * Changed `max_retakes` param to `max_attempts` for better understanding
 * Upadted docstring format for sphinx autodoc
+* Added license field for setuptools
 
 **v0.0.4:**
 
