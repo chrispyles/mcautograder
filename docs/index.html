@@ -4,6 +4,7 @@
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700|Roboto:400,400i,700&display=swap" rel="stylesheet">
 	<style type="text/css">
+
 		h1, h2, h3, h4, h5, h6 {
 			font-family: 'Roboto', sans-serif;
 			font-weight: 600;
@@ -25,19 +26,47 @@
 			font-size: 14pt;
 		}
 
-		p {
+		p, ul, th, td {
 			font-family: 'Roboto', sans-serif;
 			font-size: 12pt;
+		}
+
+		th, td {
+			border-top: 1px solid black;
+			border-left: 1px solid black;
+			text-align: center;
+			padding: 5px 2px;
+		}
+
+		th {
+			font-weight: 600;
 		}
 
 		div {
 			width: 65%;
 			margin: 0 auto;
 		}
+
+		table {
+			width: 75%;
+			margin: 0 auto;
+			border-right: 1px solid black;
+			border-bottom: 1px solid black;
+			border-spacing: 0;
+			table-layout: fixed;
+		}
+
+		p.code {
+			width: 95%;
+			margin: 10px auto;
+			padding: 10px;
+			background-color: rgb(222, 222, 222);
+		}
+
 	</style>
 </head>
 <body><div>
-<h1><code>mcuaotgrader</code> Documentation</h1>
+<h1><code>mcautograder</code> Documentation</h1>
 
 <p><a href="index">Home</a> | <a href="usage">Usage</a> | <a href="tests">Tests</a> | <a href="docs">Docs</a> | <a href="license">License</a> | <a href="help">Help</a></p>
 
@@ -49,7 +78,7 @@
 
 <p>You can install <code>mcautograder</code> using pip.</p>
 
-<p><code>bash
+<p class="code"><code>
 pip install mcautograder
 </code></p>
 

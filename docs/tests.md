@@ -16,7 +16,7 @@ Answers **must** be of length 1 (i.e. a single-character string or a single-digi
 
 An example of a tests file is given below.
 
-```python
+```
 answers = [
 	{
 		"identifier": "q1",
