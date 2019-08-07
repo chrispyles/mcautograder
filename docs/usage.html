@@ -56,6 +56,13 @@
 			table-layout: fixed;
 		}
 
+		p.code {
+			width: 95%;
+			margin: 10px auto;
+			padding: 10px;
+			background-color: rgb(222, 222, 222);
+		}
+
 	</style>
 </head>
 <body><div>
@@ -65,7 +72,7 @@
 
 <p>To use the autograder, import the <code>mcautograder</code> package and make sure to your <a href="#tests">tests file</a> with your notebook. When you load the notebook dependencies, import the file and initialize the grader by creating an instance of the <code>Notebook</code> class (the argument to pass is the path to your tests file):</p>
 
-<p><code>python
+<p class="code"><code>
 import mcautograder
 grader = mcautograder.Notebook("tests.py")
 </code></p>
@@ -74,13 +81,13 @@ grader = mcautograder.Notebook("tests.py")
 
 <p>An example call for a scored notebook with a retake ceiling of 5 is given below.</p>
 
-<p><code>python
+<p class="code"><code>
 grader = Notebook("tests.py", scored=True, max_attempts=5)
 </code></p>
 
 <p>To use the autograder to check answers, have students assign their answers to variables in the notebook; these answers can strings of length 1 or single-digit integers. Then call the <code>Notebook.check()</code> function; the first argument should be the question identifier in your tests file and the second should be the variable the student created.</p>
 
-<p><code>python
+<p class="code"><code>
 my_answer = "A"
 grader.check("q1", my_answer)
 </code></p>
@@ -89,7 +96,7 @@ grader.check("q1", my_answer)
 
 <p>To get the score on a scored autograder, simply call <code>Notebook.score()</code>:</p>
 
-<p><code>python
+<p class="code"><code>
 grader.score()
 </code></p>
 

@@ -10,7 +10,7 @@ This library is a mutliple choice question autograding library for Python. It wa
 
 You can install `mcautograder` using pip.
 
-```bash
+```
 pip install mcautograder
 ```
 
