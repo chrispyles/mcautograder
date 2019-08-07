@@ -4,6 +4,8 @@
 
 This repository contains a small Python-based multiple-choice question autograder inteded for use in Jupyter Notebooks. It is meant to be packaged with each assignment so that they are easier for use on third-party servers, e.g. MyBinder.
 
+<!--
+
 ## Installation
 
 You can install `mcautograder` using pip.
@@ -86,17 +88,25 @@ answers = [
 
 The identifiers have no set format. This is because the identifier is passed to `Notebook.check()` when you call it in the notebook.
 
+-->
+
 ## Branches
 
 The `master` branch contains the current state of `mcautograder` as it is hosted on PyPI. The `dev` branch contains the next version of `mcautograder` in development. _Do not commit directly to the `master` branch._ Make commits in the `dev` branch and then PR to the `master` branch before uploading to PyPI.
 
 ## Changelog
 
+**v0.0.6:**
+
+* Added `AssertionError` for scored notebooks with 0 points
+* Added try/except statement for scored notebook identifiers without `"points"` key
+
 **v0.0.5:**
 
 * Changed `mcautograder.py` to `notebook.py` for less confusion
 * Changed `max_retakes` param to `max_attempts` for better understanding
 * Upadted docstring format for sphinx autodoc
+* Added license field for setuptools
 
 **v0.0.4:**
 

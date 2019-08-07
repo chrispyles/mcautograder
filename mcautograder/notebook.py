@@ -35,12 +35,16 @@ class Notebook:
 
 		self._scored = scored
 		if self._scored:
-			self._points = {identifier : self._tests[identifier]["points"] for identifier in self._identifiers}
+			try:
+				self._points = {identifier : self._tests[identifier]["points"] for identifier in self._identifiers}
+			except KeyError:
+				assert False, "One or more identifiers missing points value in scored notebook"
 			self._answered = {identifier : false for identifier, false in zip(
 				self._identifiers, 
 				repeat(False, len(self._identifiers))
 			)}
 			self._possible = sum(self._points.values())
+			assert self._possible > 0, "Scored notebooks must have > 0 points possible"
 			self._earned = 0
 
 		self._inf_retakes = True
