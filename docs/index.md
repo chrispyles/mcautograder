@@ -1,4 +1,4 @@
-# `mcuaotgrader` Documentation
+# `mcautograder` Documentation
 
 [Home](index) | [Usage](usage) | [Tests](tests) | [Docs](docs) | [License](license) | [Help](help)
 
