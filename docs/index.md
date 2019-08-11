@@ -1,7 +1,5 @@
 # `mcautograder` Documentation
 
-[Home](index) | [Usage](usage) | [Tests](tests) | [Docs](docs) | [License](license) | [Help](help)
-
 ## What is `mcautograder`?
 
 This library is a mutliple choice question autograding library for Python. It was developed to be packaged with Jupyter Notebooks in such a way that does not require any special setup on the part of the server.
@@ -10,7 +8,7 @@ This library is a mutliple choice question autograding library for Python. It wa
 
 You can install `mcautograder` using pip.
 
-```
+```bash
 pip install mcautograder
 ```
 

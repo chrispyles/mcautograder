@@ -1,7 +1,5 @@
 # License
 
-[Home](index) | [Usage](usage) | [Tests](tests) | [Docs](docs) | [License](license) | [Help](help)
-
 BSD 3-Clause License
 
 Copyright (c) 2019, Chris Pyles
