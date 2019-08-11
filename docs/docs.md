@@ -1,7 +1,5 @@
 # Docs
 
-[Home](index) | [Usage](usage) | [Tests](tests) | [Docs](docs) | [License](license) | [Help](help)
-
 This page contains the documentation for the classes and methods in the `mcautograder` package.
 
 ---

@@ -1,7 +1,5 @@
 # Tests
 
-[Home](index) | [Usage](usage) | [Tests](tests) | [Docs](docs) | [License](license) | [Help](help)
-
 The autograder relies on a tests file to get the answers for the questions. Tests are ususally distributed in a hidden file, e.g. `.tests.py`. 
 
 In the file, define a variable `answers` which is a list containing dictionaries, each of which represents a single question. Each dictionary should contain 3 keys: `"identifier"`, `"answer"`, and, optionally, `"points"`. If your assignment is unscored, you can leave off the `"points"` key. A description of the keys' values is given below:
@@ -16,7 +14,7 @@ Answers **must** be of length 1 (i.e. a single-character string or a single-digi
 
 An example of a tests file is given below.
 
-```
+```python
 answers = [
 	{
 		"identifier": "q1",
