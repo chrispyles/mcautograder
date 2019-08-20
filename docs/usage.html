@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+<!--
+		Generated using Markdown to HTML Converter by Chris Pyles.
+		More at https://github.com/chrispyles/markdown-to-html
+-->
+
 <html>
 <head>
 	<title>mcautograder Documentation</title>
@@ -6,6 +12,13 @@
 	<meta name="author" content="Chris Pyles">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700|Roboto:400,400i,700&display=swap" rel="stylesheet">
 	<style type="text/css">
+
+		/* CSS for MD to HTML Converter
+			by Chris Pyles */
+
+    	body {
+    		margin-top: -20px;
+    	}
 
 		h1, h2, h3, h4, h5, h6 {
 			font-family: 'Roboto', sans-serif;
@@ -169,23 +182,24 @@
 <li><a href="tests.html">Tests</a></li>
 <li><a href="docs.html">Docs</a></li>
 <li><a href="license.html">License</a></li>
-<li><a href="help.html">Help</a></li>
 </nav><div>
 
 <h1>Usage</h1>
 
-<p>To use the autograder, import the <code>mcautograder</code> package and make sure to your <a href="#tests">tests file</a> with your notebook. When you load the notebook dependencies, import the file and initialize the grader by creating an instance of the <code>Notebook</code> class (the argument to pass is the path to your tests file):</p>
+<p>To use the autograder, import the <code>mcautograder</code> package and make sure to your <a href="tests.html">tests file</a> is in the same directory as your notebook. When you load the notebook dependencies, import the file and initialize the grader by creating an instance of the <code>Notebook</code> class:</p>
 
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mcautograder</span>
-<span class="n">grader</span> <span class="o">=</span> <span class="n">mcautograder</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&quot;tests.py&quot;</span><span class="p">)</span>
+<span class="n">grader</span> <span class="o">=</span> <span class="n">mcautograder</span><span class="o">.</span><span class="n">Notebook</span><span class="p">()</span>
 </pre></div>
 
+
+<p><strong>The autpgrader automatically assumes that the tests file is stored as <code>"./.tests.py"</code>.</strong> More details in the <a href="tests.html">tests section</a>.</p>
 
 <p>If you want the autograder to score the questions, make sure to set <code>scored=True</code> in your <code>Notebook</code> call. <strong>The default behavior of the autograder is to allow students to submit answers until they get the correct one.</strong> If you want to change this behavior, you must set the <code>max_attempts</code> argument to an integer, the maximum number of retakes allowed. If this is the case, when students hit that ceiling, the check cells will throw an <code>AssertionError</code> because they've hit the retake ceiling.</p>
 
 <p>An example call for a scored notebook with a retake ceiling of 5 is given below.</p>
 
-<div class="highlight"><pre><span></span><span class="n">grader</span> <span class="o">=</span> <span class="n">Notebook</span><span class="p">(</span><span class="s2">&quot;tests.py&quot;</span><span class="p">,</span> <span class="n">scored</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_attempts</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">grader</span> <span class="o">=</span> <span class="n">Notebook</span><span class="p">(</span><span class="n">scored</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_attempts</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 
 
