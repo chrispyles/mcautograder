@@ -34,4 +34,10 @@ grader.score()
 
 The output will contain the fraction of earned points out of possible points and the percentage.
 
+## Persistence
+
+The state of the autograder is saved in a hidden file, so that it persists between notebook kernels and prevents students from exceeding maximum retakes by restarting the notebook. 
+
+**If you are testing the autograder locally, you must make sure that you do not send the state of _your_ autograder out with the notebook.** The state is saved in a hidden file, `.MCAUTOGRADER_STATUS`, and this file must be added to your .gitignore or some similar construct so that it is not distributed to your students.
+
 For a more descriptive introduction to the autograder, launch our [Binder](https://mybinder.org/v2/gh/chrispyles/mcautograder/master?filepath=demo/mcautograder-demo.ipynb).
