@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+<!--
+		Generated using Markdown to HTML Converter by Chris Pyles.
+		More at https://github.com/chrispyles/markdown-to-html
+-->
+
 <html>
 <head>
 	<title>mcautograder Documentation</title>
@@ -6,6 +12,13 @@
 	<meta name="author" content="Chris Pyles">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700|Roboto:400,400i,700&display=swap" rel="stylesheet">
 	<style type="text/css">
+
+		/* CSS for MD to HTML Converter
+			by Chris Pyles */
+
+    	body {
+    		margin-top: -20px;
+    	}
 
 		h1, h2, h3, h4, h5, h6 {
 			font-family: 'Roboto', sans-serif;
@@ -169,12 +182,87 @@
 <li><a href="tests.html">Tests</a></li>
 <li><a href="docs.html">Docs</a></li>
 <li><a href="license.html">License</a></li>
-<li><a href="help.html">Help</a></li>
 </nav><div>
 
-<h1>Help</h1>
+<h1>Docs</h1>
 
-<p>If you have an problems with <code>mcautograder</code>, please open an issue on this project's <a href="https://github.com/chrispyles/mcautograder">Github repo</a>.</p>
+<p>This page contains the documentation for the classes and methods in the <code>mcautograder</code> package.</p>
+
+<hr />
+
+<p><strong><em>class</em> <code>mcautograder.notebook.Notebook(tests=".tests.py", scored=False, max_attempts=None)</code></strong></p>
+
+<p>Initlaizes multiple choice autograder.</p>
+
+<p>Args:</p>
+
+<ul>
+<li><code>tests</code> (<code>str</code>): The relative filepath to tests file</li>
+</ul>
+
+<p>Kwargs:</p>
+
+<ul>
+<li><code>scored</code> (<code>bool</code>): Whether or not the assignment is scored</li>
+<li><code>max_attempts</code> (<code>int</code>): The maximum number of takes allowed; deault <code>None</code></li>
+</ul>
+
+<p>Returns:</p>
+
+<ul>
+<li><code>Notebook</code>. The <code>Notebook</code> instance for the autograder</li>
+</ul>
+
+<p><strong><em>method</em> <code>mcautograder.notebook.Notebook.check(identifier, answer)</code></strong></p>
+
+<p>Visible wrapper for <code>Notebook._check_answer</code> to print output based on whether or not student's answer is correct</p>
+
+<p>Args:</p>
+
+<ul>
+<li><code>identifier</code> (<code>str</code>): The question identifier</li>
+<li><code>answer</code> (<code>str</code>, <code>int</code>): The student's answer</li>
+</ul>
+
+<p>Returns:</p>
+
+<ul>
+<li><code>None</code>. Prints out student's result on question</li>
+</ul>
+
+<p><strong><em>method</em> <code>mcautograder.notebook.Notebook.score()</code></strong></p>
+
+<p>If assignment is scored, displays student's score as fraction and percentage.</p>
+
+<hr />
+
+<p><strong><em>function</em> <code>mcautograder.utils.repeat(x, n)</code></strong></p>
+
+<p>Returns a list of a given value repeated a given number of times</p>
+
+<p>Args:</p>
+
+<ul>
+<li><code>x</code> (any): The value to repeat</li>
+<li><code>n</code> (<code>int</code>): The number of repetitions</li>
+</ul>
+
+<p>Returns:</p>
+
+<ul>
+<li><code>list</code>. List of repeated values <code>x</code></li>
+</ul>
+
+<p><strong><em>function</em> <code>mcautograder.utils.serialize(obj, file)</code></strong></p>
+
+<p>Serializes an object and writes its bytes to a file</p>
+
+<p>Args:</p>
+
+<ul>
+<li><code>obj</code> (any): Object to be serialized</li>
+<li><code>file</code> (file object): File to write bytes into</li>
+</ul>
 
 </div></body>
 </html>

@@ -16,14 +16,17 @@ class Notebook:
 		Initlaizes multiple choice autograder.
     
 		Args:
-			tests (`str`): The relative filepath to tests file
+
+		* `tests` (`str`): The relative filepath to tests file
 			
 		Kwargs:
-			scored (`bool`): Whether or not the assignment is scored
-			max_attempts (`int`): The maximum number of takes allowed; deault `None`
+
+		* `scored` (`bool`): Whether or not the assignment is scored
+		* `max_attempts` (`int`): The maximum number of takes allowed; deault `None`
 
 		Returns:
-			`Notebook`. The `Notebook` instance for the autograder
+		
+		* `Notebook`. The `Notebook` instance for the autograder
 		"""
 		if os.path.exists(".MCAUTOGRADER_STATUS") and os.path.isfile(".MCAUTOGRADER_STATUS"):
 			with open(".MCAUTOGRADER_STATUS", "rb") as f:
@@ -111,11 +114,13 @@ class Notebook:
 		Checks whether or not answer is correct; returns boolean
     
 		Args:
-			identifier (`str`): The question identifier
-			answer (`str`, `int`): The student's answer
+
+		* `identifier` (`str`): The question identifier
+		* `answer` (`str`, `int`): The student's answer
 
 		Returns:
-			`bool`. Whether or not the answer is correct
+
+		* `bool`. Whether or not the answer is correct
 		"""
 		assert identifier in self._identifiers, "{} is not in the question bank".format(identifier)
 		assert type(answer) in [str, int], "Answer must be a string or integer"
@@ -149,11 +154,13 @@ class Notebook:
 		answer is correct
 
     	Args:
-			identifier (`str`): The question identifier
-			answer (`str`, `int`): The student's answer
+
+		* `identifier` (`str`): The question identifier
+		* `answer` (`str`, `int`): The student's answer
 
 		Returns:
-			`None`. Prints out student's result on question
+
+		* `None`. Prints out student's result on question
 		"""
 		result = self._check_answer(identifier, answer)
 		if self._scored:
