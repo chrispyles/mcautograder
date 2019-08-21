@@ -7,7 +7,7 @@ import mcautograder
 grader = mcautograder.Notebook()
 ```
 
-**The autpgrader automatically assumes that the tests file is stored as `"./.tests.py"`.** More details in the [tests section](tests.html).
+**The autograder automatically assumes that the tests file is stored as `"./.tests.py"`.** More details in the [tests section](tests.html).
 
 If you want the autograder to score the questions, make sure to set `scored=True` in your `Notebook` call. **The default behavior of the autograder is to allow students to submit answers until they get the correct one.** If you want to change this behavior, you must set the `max_attempts` argument to an integer, the maximum number of retakes allowed. If this is the case, when students hit that ceiling, the check cells will throw an `AssertionError` because they've hit the retake ceiling.
 
