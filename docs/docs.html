@@ -3,6 +3,8 @@
 <!--
 		Generated using Markdown to HTML Converter by Chris Pyles.
 		More at https://github.com/chrispyles/markdown-to-html
+
+		Color scheme from https://colorhunt.co/palette/155146
 -->
 
 <html>
@@ -17,7 +19,9 @@
 			by Chris Pyles */
 
     	body {
-    		margin-top: -20px;
+    		margin-top: -27px;
+    		margin-left: 0;
+    		background-color: #ebefd0;
     	}
 
 		h1, h2, h3, h4, h5, h6 {
@@ -46,6 +50,20 @@
 			font-size: 12pt;
 		}
 
+		ul.nav {
+			list-style-type: none;
+			padding-left: 0;
+		}
+
+		li.nav {
+			padding-left: 20px;
+			width: 230px;
+		}
+
+		li.nav:hover {
+			background-color: rgba(256, 256, 256, 0.5);
+		}
+
 		th, td {
 			border-top: 1px solid black;
 			border-left: 1px solid black;
@@ -58,8 +76,29 @@
 		}
 
 		div {
-			width: 65%;
-			margin: 0 auto;
+			width: 800px;
+			margin: 0 0 0 255px;
+			background-color: white;
+			padding: 0 20px;
+			margin-top: -27px;
+		}
+
+		div#top {
+			background-color: #ff502f;
+			margin-top: 27px;
+			width: 100%;
+			height: 10px;
+			margin-left: 0;
+			position: fixed;
+			z-index: 1;
+		}
+
+		div#body {
+			position: fixed;
+			margin-top: 15px;
+			height: 100%;
+			padding-bottom: 100%;
+			overflow: scroll;
 		}
 
 		table {
@@ -80,8 +119,12 @@
 
 		nav {
 			position: fixed;
-			width: 30%;
+			width: 250px;
 			padding-left: 5px;
+			height: 100%;
+			background-color: #49beb7;
+			color: white;
+			margin-top: 36px;
 		}
 
 		/* Resize div for Pygments. */
@@ -102,17 +145,17 @@
 		/* Below is imported the style from Pygments. */
 
 		.hll { background-color: #ffffcc }
-.c { color: #625f4b; font-style: italic } /* Comment */
+.c { color: #fd8700; font-style: italic } /* Comment */
 .g { color: #fd8700 } /* Generic */
 .k { color: #53d1ed; font-weight: bold } /* Keyword */
 .n { color: #f6f7ee } /* Name */
 .o { color: #f7005f } /* Operator */
-.ch { color: #625f4b; font-style: italic } /* Comment.Hashbang */
-.cm { color: #625f4b; font-style: italic } /* Comment.Multiline */
-.cp { color: #625f4b; font-style: italic } /* Comment.Preproc */
-.cpf { color: #625f4b; font-style: italic } /* Comment.PreprocFile */
-.c1 { color: #625f4b; font-style: italic } /* Comment.Single */
-.cs { color: #625f4b; font-style: italic } /* Comment.Special */
+.ch { color: #fd8700; font-style: italic } /* Comment.Hashbang */
+.cm { color: #fd8700; font-style: italic } /* Comment.Multiline */
+.cp { color: #fd8700; font-style: italic } /* Comment.Preproc */
+.cpf { color: #fd8700; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #fd8700; font-style: italic } /* Comment.Single */
+.cs { color: #fd8700; font-style: italic } /* Comment.Special */
 .gd { color: #fd8700 } /* Generic.Deleted */
 .ge { color: #fd8700 } /* Generic.Emph */
 .gr { color: #fd8700 } /* Generic.Error */
@@ -174,15 +217,17 @@
 
 	</style>
 </head>
-<body><nav>
+<body>
+		<div id="top"></div>
+		<nav>
 <h3>Documentation</h3>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="usage.html">Usage</a></li>
-<li><a href="tests.html">Tests</a></li>
-<li><a href="docs.html">Docs</a></li>
-<li><a href="license.html">License</a></li>
-</nav><div>
+<ul class="nav">
+<li class="nav"><a href="index.html">Home</a></li>
+<li class="nav"><a href="usage.html">Usage</a></li>
+<li class="nav"><a href="tests.html">Tests</a></li>
+<li class="nav"><a href="docs.html">Docs</a></li>
+<li class="nav"><a href="license.html">License</a></li>
+</nav><div id="body">
 
 <h1>Docs</h1>
 
