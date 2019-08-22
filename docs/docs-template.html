@@ -231,18 +231,8 @@
 	</style>
 </head>
 <body>
-				<div id="top">
-
-				<table id="header"><tr><td style="border: none;">
-				<p id="header" style="text-align: left;">
-				<a class="nav" href="index.html">Home</a> &nbsp;<span style="font-size: 9pt;">►</span>&nbsp; Tests
-				</p></td><td style="border: none;">
-				<p id="header" style="text-align: right; margin-right: 38px; padding-left: 0;">
-				mcautograder Documentation
-				</p></td></tr></table>
-
-				</div>
-				<nav>
+			<div id="top"></div>
+			<nav>
 <h3 style="padding-left: 20px;">Contents</h3>
 <ul class="nav">
 <li class="nav"><a class="nav" href="index.html">Home</a></li>
@@ -252,43 +242,13 @@
 <li class="nav"><a class="nav" href="license.html">License</a></li>
 </nav><div id="body">
 
-<h1>Tests</h1>
+<h1>Docs</h1>
 
-<p>The autograder relies on a tests file to get the answers for the questions. In this repo, the file is <code>tests.py</code> and it is public; in practice, I usually distribute the answers as a hidden file, <code>.tests.py</code>. It is unhidden here so that you can peruse its structure and contents.</p>
+<p>This page contains the documentation for the classes and methods in the <code>mcautograder</code> package.</p>
 
-<p>The <code>Notebook</code> constructor by default assumes that your tests are in the file <code>.tests.py</code>. If you have a different preferred location, you can pass the path to the file by setting the <code>tests</code> argument of the constructor:</p>
+<hr />
 
-<div class="highlight"><pre><span></span><span class="n">grader</span> <span class="o">=</span> <span class="n">Notebook</span><span class="p">(</span><span class="n">tests</span><span class="o">=</span><span class="n">SOME_OTHER_PATH</span><span class="p">)</span>
-</pre></div>
-
-
-<p>In the file, we define a variable <code>answers</code> which is a list containing dictionaries, each of which represents a single question. Each dictionary should contain 3 keys: <code>"identifier"</code>, <code>"answer"</code>, and, optionally, <code>"points"</code>. If your assignment is unscored, you can leave off the <code>"points"</code> key. A description of the keys' values is given below:</p>
-
-<table><tr><th>Key</th><th>Value Type</th><th>Value Description</th></tr><tr><td><code>"identifier"</code></td><td><code>str</code></td><td>a unique question identifier</td></tr><tr><td><code>"answer"</code></td><td><code>str</code>, <code>int</code></td><td>the answer to the question; specifications below</td></tr><tr><td><code>"points"</code></td><td><code>int</code></td><td>optional; the number of points assigned to that question</td></tr></table>
-
-<p>Answers <strong>must</strong> be of length 1 (i.e. a single-character string or a single-digit integer). The autograder is currently set up to throw an <code>AssertionError</code> if an answer of length &gt; 1 is submitted, although we do intend to add this functionality later.</p>
-
-<p>An example of a file is given below.</p>
-
-<div class="highlight"><pre><span></span><span class="n">answers</span> <span class="o">=</span> <span class="p">[</span>
-	<span class="p">{</span>
-		<span class="s2">&quot;identifier&quot;</span><span class="p">:</span> <span class="s2">&quot;q1&quot;</span><span class="p">,</span>
-		<span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-		<span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-	<span class="p">},</span> <span class="p">{</span>
-		<span class="s2">&quot;identifier&quot;</span><span class="p">:</span> <span class="s2">&quot;q2&quot;</span><span class="p">,</span>
-		<span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-		<span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-	<span class="p">},</span> <span class="p">{</span>
-		<span class="s2">&quot;identifier&quot;</span><span class="p">:</span> <span class="s2">&quot;q3&quot;</span><span class="p">,</span>
-		<span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span>
-		<span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-	<span class="p">}</span>
-<span class="p">]</span>
-</pre></div>
-
-
-<p>The identifiers have no set format. This is because the identifier is passed to <code>Notebook.check()</code> when you call it in the notebook.</p>
+<p>::DOCUMENTATION::</p>
 
 </div></body>
 </html>
