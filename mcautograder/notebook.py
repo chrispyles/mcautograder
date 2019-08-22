@@ -153,7 +153,7 @@ class Notebook:
 		Visible wrapper for `Notebook._check_answer` to print output based on whether or not student's
 		answer is correct
 
-    	Args:
+		Args:
 
 		* `identifier` (`str`): The question identifier
 		* `answer` (`str`, `int`): The student's answer
