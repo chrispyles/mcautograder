@@ -8,7 +8,7 @@
 <html>
 <head>
 	<title>mcautograder Documentation</title>
-	<meta name="description" content="documntation for Python package mcautograder">
+	<meta name="description" content="documentation for Python package mcautograder">
 	<meta name="author" content="Chris Pyles">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700|Roboto:400,400i,700&display=swap" rel="stylesheet">
 	<style type="text/css">
@@ -17,7 +17,9 @@
 			by Chris Pyles */
 
     	body {
-    		margin-top: -20px;
+    		margin-top: -27px;
+    		margin-left: 0;
+    		background-color: #00b0da;
     	}
 
 		h1, h2, h3, h4, h5, h6 {
@@ -46,6 +48,25 @@
 			font-size: 12pt;
 		}
 
+		p#header {
+			color: white;
+			padding-left: 235px;
+		}
+
+		ul.nav {
+			list-style-type: none;
+			padding-left: 15px;
+		}
+
+		li.nav {
+			padding-left: 20px;
+			width: 230px;
+		}
+
+		li.nav:hover {
+			background-color: rgba(256, 256, 256, 0.5);
+		}
+
 		th, td {
 			border-top: 1px solid black;
 			border-left: 1px solid black;
@@ -58,8 +79,27 @@
 		}
 
 		div {
-			width: 65%;
-			margin: 0 auto;
+			width: 800px;
+			margin: 0 0 0 255px;
+			background-color: white;
+			padding: 0 20px;
+			margin-top: -27px;
+		}
+
+		div#top {
+			background-color: #46535e;
+			margin-top: 27px;
+			width: 100%;
+			height: 52px;
+			margin-left: 0;
+			position: fixed;
+			z-index: 1;
+		}
+
+		div#body {
+			position: absolute;
+			margin-top: 60px;
+			overflow: scroll;
 		}
 
 		table {
@@ -71,6 +111,12 @@
 			table-layout: fixed;
 		}
 
+		table#header {
+			width: 100%;
+		    height: auto;
+		    border: none;
+		}
+
 		p.code {
 			width: 95%;
 			margin: 10px auto;
@@ -80,8 +126,18 @@
 
 		nav {
 			position: fixed;
-			width: 30%;
+			width: 250px;
 			padding-left: 5px;
+			height: 100%;
+			background-color: #46535e;
+			color: white;
+			margin-top: 36px;
+			padding-top: 6px;
+			z-index: 2;
+		}
+
+		a.nav:link, a.nav:hover, a.nav:visited, a.nav:active {
+			color: white;
 		}
 
 		/* Resize div for Pygments. */
@@ -102,17 +158,17 @@
 		/* Below is imported the style from Pygments. */
 
 		.hll { background-color: #ffffcc }
-.c { color: #625f4b; font-style: italic } /* Comment */
+.c { color: #fd8700; font-style: italic } /* Comment */
 .g { color: #fd8700 } /* Generic */
 .k { color: #53d1ed; font-weight: bold } /* Keyword */
 .n { color: #f6f7ee } /* Name */
 .o { color: #f7005f } /* Operator */
-.ch { color: #625f4b; font-style: italic } /* Comment.Hashbang */
-.cm { color: #625f4b; font-style: italic } /* Comment.Multiline */
-.cp { color: #625f4b; font-style: italic } /* Comment.Preproc */
-.cpf { color: #625f4b; font-style: italic } /* Comment.PreprocFile */
-.c1 { color: #625f4b; font-style: italic } /* Comment.Single */
-.cs { color: #625f4b; font-style: italic } /* Comment.Special */
+.ch { color: #fd8700; font-style: italic } /* Comment.Hashbang */
+.cm { color: #fd8700; font-style: italic } /* Comment.Multiline */
+.cp { color: #fd8700; font-style: italic } /* Comment.Preproc */
+.cpf { color: #fd8700; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #fd8700; font-style: italic } /* Comment.Single */
+.cs { color: #fd8700; font-style: italic } /* Comment.Special */
 .gd { color: #fd8700 } /* Generic.Deleted */
 .ge { color: #fd8700 } /* Generic.Emph */
 .gr { color: #fd8700 } /* Generic.Error */
@@ -174,15 +230,27 @@
 
 	</style>
 </head>
-<body><nav>
-<h3>Documentation</h3>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="usage.html">Usage</a></li>
-<li><a href="tests.html">Tests</a></li>
-<li><a href="docs.html">Docs</a></li>
-<li><a href="license.html">License</a></li>
-</nav><div>
+<body>
+				<div id="top">
+
+				<table id="header"><tr><td style="border: none;">
+				<p id="header" style="text-align: left;">
+				<a class="nav" href="index.html">Home</a> &nbsp;<span style="font-size: 9pt;">►</span>&nbsp; Usage
+				</p></td><td style="border: none;">
+				<p id="header" style="text-align: right; margin-right: 38px; padding-left: 0;">
+				mcautograder Documentation
+				</p></td></tr></table>
+
+				</div>
+				<nav>
+<h3 style="padding-left: 20px;">Contents</h3>
+<ul class="nav">
+<li class="nav"><a class="nav" href="index.html">Home</a></li>
+<li class="nav"><a class="nav" href="usage.html">Usage</a></li>
+<li class="nav"><a class="nav" href="tests.html">Tests</a></li>
+<li class="nav"><a class="nav" href="docs.html">Docs</a></li>
+<li class="nav"><a class="nav" href="license.html">License</a></li>
+</nav><div id="body">
 
 <h1>Usage</h1>
 
@@ -193,7 +261,7 @@
 </pre></div>
 
 
-<p><strong>The autpgrader automatically assumes that the tests file is stored as <code>"./.tests.py"</code>.</strong> More details in the <a href="tests.html">tests section</a>.</p>
+<p><strong>The autograder automatically assumes that the tests file is stored as <code>"./.tests.py"</code>.</strong> More details in the <a href="tests.html">tests section</a>.</p>
 
 <p>If you want the autograder to score the questions, make sure to set <code>scored=True</code> in your <code>Notebook</code> call. <strong>The default behavior of the autograder is to allow students to submit answers until they get the correct one.</strong> If you want to change this behavior, you must set the <code>max_attempts</code> argument to an integer, the maximum number of retakes allowed. If this is the case, when students hit that ceiling, the check cells will throw an <code>AssertionError</code> because they've hit the retake ceiling.</p>
 
@@ -219,6 +287,12 @@
 
 
 <p>The output will contain the fraction of earned points out of possible points and the percentage.</p>
+
+<h2>Persistence</h2>
+
+<p>The state of the autograder is saved in a hidden file, so that it persists between notebook kernels and prevents students from exceeding maximum retakes by restarting the notebook. </p>
+
+<p><strong>If you are testing the autograder locally, you must make sure that you do not send the state of <em>your</em> autograder out with the notebook.</strong> The state is saved in a hidden file, <code>.MCAUTOGRADER_STATUS</code>, and this file must be added to your .gitignore or some similar construct so that it is not distributed to your students.</p>
 
 <p>For a more descriptive introduction to the autograder, launch our <a href="https://mybinder.org/v2/gh/chrispyles/mcautograder/master?filepath=demo/mcautograder-demo.ipynb">Binder</a>.</p>
 
