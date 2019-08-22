@@ -1,8 +1,8 @@
 title: mcautograder Documentation
 author: Chris Pyles
-description: documntation for Python package mcautograder
+description: documentation for Python package mcautograder
 navigation:
-  nav_title: Documentation
+  nav_title: Contents
   links:
     - title: Home
       url: index.html

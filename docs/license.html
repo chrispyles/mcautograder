@@ -3,14 +3,12 @@
 <!--
 		Generated using Markdown to HTML Converter by Chris Pyles.
 		More at https://github.com/chrispyles/markdown-to-html
-
-		Color scheme from https://colorhunt.co/palette/155146
 -->
 
 <html>
 <head>
 	<title>mcautograder Documentation</title>
-	<meta name="description" content="documntation for Python package mcautograder">
+	<meta name="description" content="documentation for Python package mcautograder">
 	<meta name="author" content="Chris Pyles">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,600,700|Roboto:400,400i,700&display=swap" rel="stylesheet">
 	<style type="text/css">
@@ -21,7 +19,7 @@
     	body {
     		margin-top: -27px;
     		margin-left: 0;
-    		background-color: #ebefd0;
+    		background-color: #00b0da;
     	}
 
 		h1, h2, h3, h4, h5, h6 {
@@ -50,9 +48,14 @@
 			font-size: 12pt;
 		}
 
+		p#header {
+			color: white;
+			padding-left: 235px;
+		}
+
 		ul.nav {
 			list-style-type: none;
-			padding-left: 0;
+			padding-left: 15px;
 		}
 
 		li.nav {
@@ -84,20 +87,18 @@
 		}
 
 		div#top {
-			background-color: #ff502f;
+			background-color: #46535e;
 			margin-top: 27px;
 			width: 100%;
-			height: 10px;
+			height: 52px;
 			margin-left: 0;
 			position: fixed;
 			z-index: 1;
 		}
 
 		div#body {
-			position: fixed;
-			margin-top: 15px;
-			height: 100%;
-			padding-bottom: 100%;
+			position: absolute;
+			margin-top: 60px;
 			overflow: scroll;
 		}
 
@@ -108,6 +109,12 @@
 			border-bottom: 1px solid black;
 			border-spacing: 0;
 			table-layout: fixed;
+		}
+
+		table#header {
+			width: 100%;
+		    height: auto;
+		    border: none;
 		}
 
 		p.code {
@@ -122,9 +129,15 @@
 			width: 250px;
 			padding-left: 5px;
 			height: 100%;
-			background-color: #49beb7;
+			background-color: #46535e;
 			color: white;
 			margin-top: 36px;
+			padding-top: 6px;
+			z-index: 2;
+		}
+
+		a.nav:link, a.nav:hover, a.nav:visited, a.nav:active {
+			color: white;
 		}
 
 		/* Resize div for Pygments. */
@@ -218,15 +231,25 @@
 	</style>
 </head>
 <body>
-		<div id="top"></div>
-		<nav>
-<h3>Documentation</h3>
+				<div id="top">
+
+				<table id="header"><tr><td style="border: none;">
+				<p id="header" style="text-align: left;">
+				<a class="nav" href="index.html">Home</a> &nbsp;<span style="font-size: 9pt;">►</span>&nbsp; License
+				</p></td><td style="border: none;">
+				<p id="header" style="text-align: right; margin-right: 38px; padding-left: 0;">
+				mcautograder Documentation
+				</p></td></tr></table>
+
+				</div>
+				<nav>
+<h3 style="padding-left: 20px;">Contents</h3>
 <ul class="nav">
-<li class="nav"><a href="index.html">Home</a></li>
-<li class="nav"><a href="usage.html">Usage</a></li>
-<li class="nav"><a href="tests.html">Tests</a></li>
-<li class="nav"><a href="docs.html">Docs</a></li>
-<li class="nav"><a href="license.html">License</a></li>
+<li class="nav"><a class="nav" href="index.html">Home</a></li>
+<li class="nav"><a class="nav" href="usage.html">Usage</a></li>
+<li class="nav"><a class="nav" href="tests.html">Tests</a></li>
+<li class="nav"><a class="nav" href="docs.html">Docs</a></li>
+<li class="nav"><a class="nav" href="license.html">License</a></li>
 </nav><div id="body">
 
 <h1>License</h1>
